@@ -1,4 +1,4 @@
-import { bcryptAdapter } from '../../config'
+import { JWTAdapter, bcryptAdapter } from '../../config'
 import { UserModel } from '../../data'
 import { CustomError, RegisterUserDTO, UserEntity, type LoginUserDTO } from '../../domain'
 
@@ -42,10 +42,12 @@ export class AuthService {
       if (!isMatching) throw CustomError.badRequest('Invalid credentials')
 
       // TODO: JWT token -> to keep user session
+      const token = await JWTAdapter.generateToken({ id: user.id })
+      if (!token) throw CustomError.internalServer('Failed to generate token')
 
       const { password, ...rest } = UserEntity.fromObject(user)
 
-      return { user: { ...rest }, token: 'ABC123' }
+      return { user: { ...rest }, token }
     } catch (error) {
       throw CustomError.internalServer(`${error}`)
     }
