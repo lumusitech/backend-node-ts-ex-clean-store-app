@@ -19,13 +19,16 @@ export class AuthService {
       user.password = bcryptAdapter.hash(registerUserDTO.password)
 
       await user.save()
-      // TODO: JWT token -> to keep user session
-
-      // TODO: send confirmation email
 
       const { password, ...rest } = UserEntity.fromObject(user)
 
-      return { user: { ...rest }, token: 'ABC123' }
+      // TODO: JWT token -> to keep user session
+      const token = await JWTAdapter.generateToken({ id: user.id })
+      if (!token) throw CustomError.internalServer('Failed to generate token')
+
+      // TODO: send confirmation email
+
+      return { user: { ...rest }, token }
     } catch (error) {
       throw CustomError.internalServer(`${error}`)
     }
