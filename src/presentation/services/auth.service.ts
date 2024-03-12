@@ -1,5 +1,6 @@
+import { bcryptAdapter } from '../../config'
 import { UserModel } from '../../data'
-import { CustomError, RegisterUserDTO } from '../../domain'
+import { CustomError, RegisterUserDTO, UserEntity, type LoginUserDTO } from '../../domain'
 
 export class AuthService {
   // DI
@@ -12,6 +13,41 @@ export class AuthService {
 
     if (existsUser) throw CustomError.badRequest('Email already exists')
 
-    return 'all ok'
+    try {
+      const user = new UserModel(registerUserDTO)
+
+      user.password = bcryptAdapter.hash(registerUserDTO.password)
+
+      await user.save()
+      // TODO: JWT token -> to keep user session
+
+      // TODO: send confirmation email
+
+      const { password, ...rest } = UserEntity.fromObject(user)
+
+      return { user: { ...rest }, token: 'ABC123' }
+    } catch (error) {
+      throw CustomError.internalServer(`${error}`)
+    }
+  }
+
+  public async loginUser(loginUserDto: LoginUserDTO) {
+    try {
+      const user = await UserModel.findOne({ email: loginUserDto.email })
+
+      if (!user) throw CustomError.badRequest('Email not exists')
+
+      const isMatching = bcryptAdapter.compare(loginUserDto.password, user.password)
+
+      if (!isMatching) throw CustomError.badRequest('Invalid credentials')
+
+      // TODO: JWT token -> to keep user session
+
+      const { password, ...rest } = UserEntity.fromObject(user)
+
+      return { user: { ...rest }, token: 'ABC123' }
+    } catch (error) {
+      throw CustomError.internalServer(`${error}`)
+    }
   }
 }
