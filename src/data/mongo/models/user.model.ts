@@ -12,7 +12,7 @@ const userSchema = new Schema({
   },
   emailValidated: {
     type: Boolean,
-    defaul: false,
+    default: false,
   },
   password: {
     type: String,
