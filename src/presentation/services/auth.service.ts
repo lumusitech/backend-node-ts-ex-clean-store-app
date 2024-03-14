@@ -66,7 +66,7 @@ export class AuthService {
 
     const link = `${envs.WEBSERVICE_URL}/auth/validate-email/${token}`
     const html = `
-    h1>Validate your email</h1>
+    <h1>Validate your email</h1>
     <p>Click on the following link to validate your email:</p>
     <a href="${link}">Validate your email: ${email}</a>
     `
@@ -79,6 +79,23 @@ export class AuthService {
 
     const isSent = await this.emailService.sendEmail(options)
     if (!isSent) throw CustomError.internalServer('Failed to send email')
+
+    return true
+  }
+
+  public validateEmail = async (token: string) => {
+    const payload = await JWTAdapter.validateToken(token)
+    if (!payload) throw CustomError.unauthorized('Invalid token')
+
+    const { email } = payload as { email: string }
+    if (!email) throw CustomError.internalServer('email not found in token')
+
+    const user = await UserModel.findOne({ email })
+    if (!user) throw CustomError.internalServer('email not exists')
+
+    user.emailValidated = true
+
+    await user.save()
 
     return true
   }
