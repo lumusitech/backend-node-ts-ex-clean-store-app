@@ -15,7 +15,13 @@ export interface Attachment {
 export class EmailService {
   private transporter: Transporter
 
-  constructor(mailerService: string, mailerEmail: string, mailerSecretKey: string) {
+  constructor(
+    mailerService: string,
+    mailerEmail: string,
+    mailerSecretKey: string,
+    // postToProvider get the value from env var SEND_EMAIL_ENABLE
+    private readonly postToProvider: boolean,
+  ) {
     this.transporter = nodemailer.createTransport({
       service: mailerService,
       auth: {
@@ -29,6 +35,10 @@ export class EmailService {
     const { to, subject, htmlBody, attachments = [] } = options
 
     try {
+      // If env var named SEND_EMAIL_ENABLE is false, this simulate a success response (dev)
+      if (!this.postToProvider) return true
+
+      // If env var named SEND_EMAIL_ENABLE is true, this send email (prod)
       const sentInformation = await this.transporter.sendMail({
         to: to,
         subject: subject,
