@@ -15,6 +15,8 @@ NOTE: After clone:
 
    JWT_SEED=your_secret_seed
 
+   # Change to true to send validation email
+   SEND_EMAIL_ENABLE=false
    MAILER_SERVICE=gmail
    MAILER_EMAIL=your_gmail
    MAILER_SECRET_KEY=your_secret_key
