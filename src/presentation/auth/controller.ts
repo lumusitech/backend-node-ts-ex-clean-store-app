@@ -43,9 +43,7 @@ export class AuthController {
 
     this.authService
       .validateEmail(token)
-      .then(() =>
-        res.json({ msg: 'email was successfully validated, please close this tab and login' }),
-      )
+      .then(() => res.json('email was successfully validated, please close this tab and login'))
       .catch(error => this.handleError(res, error))
   }
 }
