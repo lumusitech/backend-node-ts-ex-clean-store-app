@@ -19,7 +19,10 @@ NOTE: After clone:
    MAILER_EMAIL=your_gmail
    MAILER_SECRET_KEY=your_secret_key
 
+   # change http://localhost:3000/ to given url from ngrok after command ngrok http 3000
+
    WEBSERVICE_URL=http://localhost:3000/api
+
    ```
 
    _[Get gmail secret key here](https://myaccount.google.com/u/0/apppasswords)_
