@@ -43,6 +43,8 @@ NOTE: After clone:
    ngrok http 3000 # same port of your api
    ```
 
+   UPDATE: Now, from Vscode you can use forward port (abrir puerto) open terminal and then, go to ports tab. Set as public and share. With this you can skip using of ngrok dependency.
+
 3. Next, run:
 
    ```sh
