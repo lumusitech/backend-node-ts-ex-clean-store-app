@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express'
-import { CustomError } from '../../domain'
+import { CreateCategoryDTO, CustomError } from '../../domain'
 import type { CategoryService } from '../services/category.service'
 
 export class CategoryController {
@@ -17,7 +17,11 @@ export class CategoryController {
   }
 
   createCategory = (req: Request, res: Response) => {
-    return res.json({ message: 'createCategory' })
+    const [error, createCategoryDTO] = CreateCategoryDTO.create(req.body)
+
+    if (error) res.status(400).json({ error })
+
+    return res.json({ dto: createCategoryDTO })
   }
 
   getAll = (req: Request, res: Response) => {
