@@ -4,6 +4,7 @@ const categorySchema = new Schema({
   name: {
     type: String,
     required: [true, 'Name is required'],
+    unique: true,
   },
   available: {
     type: Boolean,
@@ -16,4 +17,4 @@ const categorySchema = new Schema({
   },
 })
 
-export const categoryModel = model('Category', categorySchema)
+export const CategoryModel = model('Category', categorySchema)
