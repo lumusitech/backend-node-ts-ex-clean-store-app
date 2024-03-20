@@ -29,4 +29,13 @@ const productSchema = new Schema({
   },
 })
 
+productSchema.set('toJSON', {
+  // add prop id into response
+  virtuals: true,
+  versionKey: false,
+  transform(doc, ret, options) {
+    delete ret._id
+  },
+})
+
 export const ProductModel = model('Product', productSchema)
