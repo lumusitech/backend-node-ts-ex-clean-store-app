@@ -52,6 +52,7 @@ NOTE: After clone:
    ```sh
    pnpm i
    docker compose up -d
+   pnpm seed # to populate db
    pnpm dev
    ```
 
