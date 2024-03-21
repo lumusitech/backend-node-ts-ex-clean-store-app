@@ -105,6 +105,7 @@ NOTE: After clone:
 - [Nodemailer types](https://www.npmjs.com/package/@types/nodemailer):This package contains type definitions for nodemailer.
 - [Bcryptjs types](https://www.npmjs.com/package/@types/bcryptjs):This package contains type definitions for bcryptjs.
 - [Jsonwebtoken types](https://www.npmjs.com/package/@types/jsonwebtoken):This package contains type definitions for jsonwebtoken.
+- [UUID types](https://www.npmjs.com/package/@types/uuid):This package contains type definitions for uuid.
 
 ### Production
 
@@ -120,4 +121,5 @@ NOTE: After clone:
 
 - [Bcryptjs](https://www.npmjs.com/package/bcryptjs): Bcryptjs hash and check passwords. Optimized bcrypt in JavaScript with zero dependencies. Compatible to the C++ bcrypt binding on node.js and also working in the browser.
 - [Jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken): An implementation of JSON Web Tokens.
-  This was developed against draft-ietf-oauth-json-web-token-08. It makes use of node-jws
+  This was developed against draft-ietf-oauth-json-web-token-08. It makes use of node-jws.
+- [UUID](https://www.npmjs.com/package/uuid): For the creation of RFC4122 UUIDs.
