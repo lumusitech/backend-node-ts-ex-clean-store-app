@@ -106,6 +106,7 @@ NOTE: After clone:
 - [Bcryptjs types](https://www.npmjs.com/package/@types/bcryptjs):This package contains type definitions for bcryptjs.
 - [Jsonwebtoken types](https://www.npmjs.com/package/@types/jsonwebtoken):This package contains type definitions for jsonwebtoken.
 - [UUID types](https://www.npmjs.com/package/@types/uuid):This package contains type definitions for uuid.
+- [Express types](https://www.npmjs.com/package/@types/express-fileupload):This package contains type definitions for express-fileupload.
 
 ### Production
 
@@ -123,3 +124,4 @@ NOTE: After clone:
 - [Jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken): An implementation of JSON Web Tokens.
   This was developed against draft-ietf-oauth-json-web-token-08. It makes use of node-jws.
 - [UUID](https://www.npmjs.com/package/uuid): For the creation of RFC4122 UUIDs.
+- [Express File Upload](https://www.npmjs.com/package/express-fileupload): Simple express middleware for uploading files.
