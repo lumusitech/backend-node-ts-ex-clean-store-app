@@ -124,4 +124,4 @@ NOTE: After clone:
 - [Jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken): An implementation of JSON Web Tokens.
   This was developed against draft-ietf-oauth-json-web-token-08. It makes use of node-jws.
 - [UUID](https://www.npmjs.com/package/uuid): For the creation of RFC4122 UUIDs.
-- [Express File Upload](https://www.npmjs.com/package/express-fileupload): Simple express middleware for uploading files.
+- [Express File Upload](https://www.npmjs.com/package/express-fileupload): Simple Express middleware for uploading files.
