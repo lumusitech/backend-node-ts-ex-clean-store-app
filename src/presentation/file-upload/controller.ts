@@ -19,15 +19,20 @@ export class FileUploadController {
 
   uploadFile = (req: Request, res: Response) => {
     const files = req.files
+    const type = req.params.type
+    // We can set this validTypes into env vars
+    const validTypes = ['users', 'products', 'categories']
+    if (!validTypes.includes(type))
+      return res.status(400).json({ error: `Invalid type: ${type}, valid ones: ${validTypes}` })
 
-    if (!files || Object.keys.length === 0) {
+    if (!files || Object.keys(files).length === 0) {
       return res.status(400).json({ error: 'No files were selected' })
     }
 
     const file = files.file as UploadedFile
 
     this.fileUploadService
-      .uploadSingle(file)
+      .uploadSingle(file, `uploads/${type}`)
       .then(() => res.json({ message: 'uploaded file' }))
       .catch(error => this.handleError(res, error))
   }
