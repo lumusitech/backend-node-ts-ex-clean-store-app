@@ -33,8 +33,8 @@ importers:
         specifier: ^6.9.12
         version: 6.9.12
       pnpm:
-        specifier: ^8.15.5
-        version: 8.15.5
+        specifier: ^9.1.2
+        version: 9.1.2
       uuid:
         specifier: ^9.0.1
         version: 9.0.1
@@ -731,9 +731,9 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
 
-  pnpm@8.15.5:
-    resolution: {integrity: sha512-sFGjLH5pWDO4SSbTspuMylclS1ifBknYmcbp0O22cLkex+KkNFm65zdZu1zmGcMmbxFr+THOItHvF1mn5Fqpbw==}
-    engines: {node: '>=16.14'}
+  pnpm@9.1.2:
+    resolution: {integrity: sha512-En3IO56hDDK+ZdIqjvtKZfuVLo/vvf3tOb3DyX78MtMbSLAEIN8sEYes4oySHJAvDLWhNKTQMri1KVy/osaB4g==}
+    engines: {node: '>=18.12'}
     hasBin: true
 
   proxy-addr@2.0.7:
@@ -1635,7 +1635,7 @@ snapshots:
 
   picomatch@2.3.1: {}
 
-  pnpm@8.15.5: {}
+  pnpm@9.1.2: {}
 
   proxy-addr@2.0.7:
     dependencies:
